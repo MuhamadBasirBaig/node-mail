@@ -28,7 +28,7 @@ const mailHost = 'smtp.gmail.com'
 // 587 là một cổng tiêu chuẩn và phổ biến trong giao thức SMTP
 const mailPort = 587
 
-const sendMail = (to, subject, htmlContent) => {
+const sendMail = (from, subject, htmlContent) => {
   // Khởi tạo một thằng transporter object sử dụng chuẩn giao thức truyền tải SMTP với các thông tin cấu hình ở trên.
   const transporter = nodeMailer.createTransport({
     host: mailHost,
@@ -40,9 +40,16 @@ const sendMail = (to, subject, htmlContent) => {
     }
   })
 
+  // const options = {
+  //   from: adminEmail, // địa chỉ admin email bạn dùng để gửi
+  //   to: to, // địa chỉ gửi đến
+  //   subject: subject, // Tiêu đề của mail
+  //   html: htmlContent // Phần nội dung mail mình sẽ dùng html thay vì thuần văn bản thông thường.
+  // }
+
   const options = {
-    from: adminEmail, // địa chỉ admin email bạn dùng để gửi
-    to: to, // địa chỉ gửi đến
+    from, // địa chỉ admin email bạn dùng để gửi
+    to: adminEmail, // địa chỉ gửi đến
     subject: subject, // Tiêu đề của mail
     html: htmlContent // Phần nội dung mail mình sẽ dùng html thay vì thuần văn bản thông thường.
   }
@@ -53,10 +60,10 @@ const sendMail = (to, subject, htmlContent) => {
 router.post('/send-email', async (req, res) => {
     try {
       // Lấy data truyền lên từ form phía client
-      const { to, subject, body } = req.body
+      const { from, subject, body } = req.body
   
       // Thực hiện gửi email
-      await sendMail(to, subject, body)
+      await sendMail(from, subject, body)
   
      
       res.send('<h3>Your email has been sent successfully.</h3>')
