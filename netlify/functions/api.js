@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import express, { Router } from "express";
 import serverless from "serverless-http";
-const emailController = require('./src/controllers/emailController')
+const emailController = require('../../src/controllers/emailController')
 
 // const express = require('express')
 // const app = express()
