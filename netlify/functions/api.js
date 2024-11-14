@@ -11,6 +11,8 @@ const router = Router();
 const api = express();
 api.use(bodyParser.json())
 
+// Cho phép lý dữ liệu từ form method POST
+api.use(express.urlencoded({extended: true}))
 
 router.get("/hello", (req, res) => res.send("Hello World!"));
 
@@ -19,8 +21,6 @@ api.use("/api/", router);
 
 
 
-// Cho phép lý dữ liệu từ form method POST
-api.use(express.urlencoded({extended: true}))
 
 
 
