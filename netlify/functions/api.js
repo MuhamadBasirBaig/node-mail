@@ -13,15 +13,27 @@ const router = Router();
 const api = express();
 api.use(bodyParser.json())
 
-const corsOptions = {
-  origin: ['https://tech2initiative.org'],
-  allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
-  credentials: true,
-  enablePreflight: true
-}
+app.use(function (req, res, next) {
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions))
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
+app.use(cors({
+  origin: '*', // Replace with your domain or use '*' for all origins
+}));
 // Cho phép lý dữ liệu từ form method POST
 api.use(express.urlencoded({extended: true}))
 
