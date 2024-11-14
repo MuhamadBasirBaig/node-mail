@@ -1,5 +1,5 @@
 /**
- * Created by trungquandev.com's author on 18/02/2020.
+ *
  * routes/web.js
  */
 const express = require('express')
