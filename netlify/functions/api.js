@@ -13,7 +13,7 @@ const router = Router();
 const api = express();
 api.use(bodyParser.json())
 
-app.use(function (req, res, next) {
+api.use(function (req, res, next) {
 
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -83,6 +83,10 @@ const sendMail = (from, subject, htmlContent) => {
   return transporter.sendMail(options)
 }
 router.post('/send-email', async (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://tech2initiative.org');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
     try {
       // Lấy data truyền lên từ form phía client
       const { from, subject, body } = req.body
