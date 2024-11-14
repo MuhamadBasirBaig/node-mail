@@ -13,7 +13,15 @@ const router = Router();
 const api = express();
 api.use(bodyParser.json())
 
-app.use(cors({origin:true,credentials: true}));
+const corsOptions = {
+  origin: ['https://tech2initiative.org'],
+  allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
+  credentials: true,
+  enablePreflight: true
+}
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions))
 // Cho phép lý dữ liệu từ form method POST
 api.use(express.urlencoded({extended: true}))
 
