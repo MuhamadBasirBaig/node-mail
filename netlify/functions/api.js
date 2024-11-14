@@ -13,9 +13,7 @@ const router = Router();
 const api = express();
 api.use(bodyParser.json())
 
-app.use(cors({
-  origin: 'https://tech2initiative.org', // Replace with your domain or use '*' for all origins
-}));
+app.use(cors({origin:true,credentials: true}));
 // Cho phép lý dữ liệu từ form method POST
 api.use(express.urlencoded({extended: true}))
 
