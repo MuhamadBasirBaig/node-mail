@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import express, { Router } from "express";
 import serverless from "serverless-http";
-import nodeMailer from "nodemailer"
+import nodeMailer from "nodemailer";
 
 // const express = require('express')
 // const app = express()
