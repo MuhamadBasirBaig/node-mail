@@ -41,11 +41,11 @@ api.use(express.urlencoded({extended: true}))
 
 // Những thông tin dưới đây các bạn có thể ném nó vào biến môi trường env nhé.
 // Vì để demo nên mình để các biến const ở đây.
-// const adminEmail = 'basir.iplex@gmail.com'
-// const adminPassword = 'oexy pywc ceyq vide'
+const adminEmail = 'basir.iplex@gmail.com'
+const adminPassword = 'oexy pywc ceyq vide'
 
-const adminEmail = 'info@tech2initiative.org'
-const adminPassword = 'hcmn oybh qcll tlbf'
+// const adminEmail = 'info@tech2initiative.org'
+// const adminPassword = 'hcmn oybh qcll tlbf'
 
 
 // Mình sử dụng host của google - gmail
