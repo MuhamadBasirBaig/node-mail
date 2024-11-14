@@ -31,7 +31,7 @@ api.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-app.use(cors({
+api.use(cors({
   origin: '*', // Replace with your domain or use '*' for all origins
 }));
 // Cho phép lý dữ liệu từ form method POST
